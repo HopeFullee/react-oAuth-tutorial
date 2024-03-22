@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter } from 'react-router-dom';
+import Layout from './components/layout';
+import { GoogleAuth } from './components/providers';
+import NotFound from './404';
+import LoginPage from './page/login-page';
+import LoggedInPage from './page/logged-in-page';
+import { RouterProvider } from 'react-router-dom';
+import { Suspense } from 'react';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    errorElement: <NotFound />,
+    children: [
+      {
+        index: true,
+        element: <LoginPage />,
+      },
+      {
+        path: 'logged',
+        element: <LoggedInPage />,
+      },
+    ],
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={null}>
+      <RouterProvider router={router} />
+    </Suspense>
   );
 }
 
