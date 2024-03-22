@@ -1,15 +1,13 @@
 import { SetStateAction, useEffect, useRef } from 'react';
 import useScript from '../../../utils/use-script';
-import { useNavigate } from 'react-router-dom';
 
 interface Props {
-  setSession: React.Dispatch<SetStateAction<{ provider: string; email: string }>>;
+  setSession: React.Dispatch<SetStateAction<{ provider: string; authId: string }>>;
 }
 
 export const GoogleAuth = ({ setSession }: Props) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const googleScriptStatus = useScript('https://accounts.google.com/gsi/client');
-  // const navigate = useNavigate();
 
   useEffect(() => {
     if (googleScriptStatus !== 'ready') return;
@@ -24,7 +22,7 @@ export const GoogleAuth = ({ setSession }: Props) => {
         // 로그인 핸들링
         setSession({
           provider: 'Google',
-          email: userInfo.email,
+          authId: userInfo.sub,
         });
       },
     });
