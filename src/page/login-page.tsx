@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { GoogleAuth, NaverAuth } from '../components/providers';
+import { GoogleAuth, KakaoAuth, NaverAuth } from '../components/providers';
 
 const LoginPage = () => {
   const [sessionInfo, setSessionInfo] = useState({
@@ -13,6 +13,7 @@ const LoginPage = () => {
       <div className="flex-center gap-20">
         <GoogleAuth setSession={setSessionInfo} />
         <NaverAuth setSession={setSessionInfo} />
+        <KakaoAuth setSession={setSessionInfo} />
       </div>
       {sessionInfo.provider && (
         <div className="flex-col-center max-w-400 w-full gap-10">
