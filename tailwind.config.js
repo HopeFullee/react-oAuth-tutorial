@@ -1,10 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 import plugin from 'tailwindcss/plugin';
 
-const px0_50 = { ...Array.from(Array(51)).map((_, i) => `${i}px`) } as Record<number, string>;
-const px0_100 = { ...Array.from(Array(101)).map((_, i) => `${i}px`) } as Record<number, string>;
-const px0_300 = { ...Array.from(Array(301)).map((_, i) => `${i}px`) } as Record<number, string>;
-const px0_1920 = { ...Array.from(Array(1921)).map((_, i) => `${i}px`) } as Record<number, string>;
+const px0_50 = { ...Array.from(Array(51)).map((_, i) => `${i}px`) };
+const px0_100 = { ...Array.from(Array(101)).map((_, i) => `${i}px`) };
+const px0_300 = { ...Array.from(Array(301)).map((_, i) => `${i}px`) };
+const px0_1920 = { ...Array.from(Array(1921)).map((_, i) => `${i}px`) };
 
 const customUtilities = plugin(({ addUtilities }) => {
   addUtilities({
@@ -28,7 +28,7 @@ const customVariant = plugin(({ addVariant }) => {
 });
 
 module.exports = {
-  content: ['./src/**/*.{js,jsx,tsx}'],
+  content: ['./public/index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       borderWidth: px0_50,

@@ -1,6 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from './components/layout';
-import { GoogleAuth } from './components/providers';
 import NotFound from './404';
 import LoginPage from './page/login-page';
 import LoggedInPage from './page/logged-in-page';
